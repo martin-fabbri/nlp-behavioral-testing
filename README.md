@@ -1,4 +1,4 @@
-# nlp-behavioral-testing
+# NLP Behavioral Testing
 Approaches to perform behavioral testing on NLP applications.
 
 ## References 
