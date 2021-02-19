@@ -6,4 +6,5 @@ tabulate
 sentencepiece
 dvc
 nltk
+tensorflow
 
