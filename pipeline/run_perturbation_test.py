@@ -7,11 +7,11 @@ from transformers.tokenization_utils import PreTrainedTokenizer
 
 from config import Config
 
+transformer_model = "distilbert-base-uncased-finetuned-sst-2-english"
+
 # load model
-tokenizer = AutoTokenizer.from_pretrained("textattack/albert-base-v2-SST-2")
-inference_model = AutoModelForSequenceClassification.from_pretrained(
-    "textattack/albert-base-v2-SST-2"
-)
+tokenizer = AutoTokenizer.from_pretrained(transformer_model)
+inference_model = AutoModelForSequenceClassification.from_pretrained(transformer_model)
 
 model = pipeline("sentiment-analysis", model=inference_model, tokenizer=tokenizer)
 
