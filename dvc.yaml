@@ -6,3 +6,11 @@ stages:
     - pipeline/make_test_set.py
     outs:
     - artifacts/test_set.tsv
+  attack:
+    cmd: python3 pipeline/run_perturbation_test.py
+    deps:
+    - artifacts/test_set.tsv
+    - pipeline/run_perturbation_test.py
+    outs:
+    - artifacts/test_scores.json
+    - artifacts/top_perturbations.txt

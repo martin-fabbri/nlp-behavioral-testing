@@ -11,3 +11,19 @@ prepare:
   - path: artifacts/test_set.tsv
     md5: f4294297be2cae6205990c154dd60a1b
     size: 45787
+attack:
+  cmd: python3 pipeline/run_perturbation_test.py
+  deps:
+  - path: artifacts/test_set.tsv
+    md5: f4294297be2cae6205990c154dd60a1b
+    size: 45787
+  - path: pipeline/run_perturbation_test.py
+    md5: 03cd790f47af30bca2879d9cc909755a
+    size: 1989
+  outs:
+  - path: artifacts/test_scores.json
+    md5: 1b694788cbf26b49eb03c3ca789cae66
+    size: 61
+  - path: artifacts/top_perturbations.txt
+    md5: ff32e9c7345459411af6bbc3cc8b8119
+    size: 1084
