@@ -1,8 +1,9 @@
-import nltk
 import random
 
+import nltk
+from config import Config
 
-f = open("dataset/raw.txt")
+f = open(Config.RAW_DATA)
 corpus = f.read()
 
 # Split into sentences
@@ -11,11 +12,11 @@ sent_list = nltk.tokenize.sent_tokenize(corpus)
 clean_list = [s for s in sent_list if len(s) > 20]
 
 # Randomly select 1000 for testing
-random.seed(1)
+random.seed(Config.RANDOM_SEED)
 keep = random.sample(clean_list, 500)
 
 # Write this subset to file
-with open("data/test_set.tsv", "w") as f:
+with open(Config.TEST_SET, "w") as f:
     for item in keep:
         # Remove any newlines in the body of the text to avoid confusion
         f.write("%s\t" % item.strip())
