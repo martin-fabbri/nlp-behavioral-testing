@@ -1,0 +1,13 @@
+prepare:
+  cmd: python3 pipeline/make_test_set.py
+  deps:
+  - path: dataset/data_raw.txt
+    md5: 3b48f03d29b6dd2d45fb8170ddcffbed
+    size: 620386
+  - path: pipeline/make_test_set.py
+    md5: 4a8cb0f840c85987497fd92bb56fbcb6
+    size: 627
+  outs:
+  - path: artifacts/test_set.tsv
+    md5: f4294297be2cae6205990c154dd60a1b
+    size: 45787

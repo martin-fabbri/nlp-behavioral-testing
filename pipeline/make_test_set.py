@@ -1,7 +1,10 @@
 import random
 
 import nltk
+
 from config import Config
+
+nltk.download("punkt")
 
 f = open(Config.RAW_DATA)
 corpus = f.read()

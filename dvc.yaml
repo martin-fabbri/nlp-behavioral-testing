@@ -1,0 +1,8 @@
+stages:
+  prepare:
+    cmd: python3 pipeline/make_test_set.py
+    deps:
+    - dataset/data_raw.txt
+    - pipeline/make_test_set.py
+    outs:
+    - artifacts/test_set.tsv
