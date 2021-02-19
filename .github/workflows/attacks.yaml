@@ -1,0 +1,27 @@
+name: perturbation-attacks
+on: [push]
+jobs:
+  run:
+    runs-on: [ubuntu-latest]
+    container: docker://dvcorg/cml-py3:latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: cml_run
+        env:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Run the test
+          pip install -r requirements.txt
+          dvc repro
+          
+          # Report the diff
+          echo "## Workspace vs. Main" > report.md
+          git fetch --prune
+          dvc metrics diff main --targets artifacts/test_scores.json --show-md >> report.md
+          
+          # Print out the failure modes
+          echo "## Failure modes" >> report.md
+          cat artifacts/top_perturbations.txt >> report.md
+          
+          # Send it!
+          cml-send-comment report.md
